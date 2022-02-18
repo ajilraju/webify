@@ -21,8 +21,11 @@ func viewHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	port := ":80"
+
 	http.HandleFunc("/", handler)
 	http.HandleFunc("/healthcheck/", healthchkHandler)
 	http.HandleFunc("/wiki/", viewHandler)
-	log.Fatal(http.ListenAndServe(":80", nil))
+	fmt.Printf("Starting server at port 0.0.0.0%s.\n", port)
+	log.Fatal(http.ListenAndServe(port, nil))
 }
